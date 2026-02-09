@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Games Khane</title>
+
+  <meta name="theme-color" content="#0f0f14">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HOME -->
+  <div class="screen active" id="home">
+    <h1>🎮 Games Khane</h1>
+    <p>Pick a game & pass the phone</p>
+
+    <div class="menu">
+      <button onclick="openGame('mostLikely')">😂 Who’s Most Likely To</button>
+      <button onclick="openGame('truthDare')">🃏 Truth or Dare</button>
+      <button onclick="openGame('wouldRather')">🤔 Would You Rather</button>
+      <button onclick="openGame('challenge')">🎲 Random Challenge</button>
+      <button onclick="openGame('conversation')">🧠 Conversation Starter</button>
+      <button onclick="openGame('tonight')">🎯 What Are We Doing Tonight?</button>
+    </div>
+  </div>
+
+  <!-- MOST LIKELY -->
+  <div class="screen game" id="mostLikely">
+    <h1>😂 Most Likely To</h1>
+    <div class="card" id="mostLikelyText"></div>
+    <button onclick="nextMostLikely()">Next</button>
+    <button class="back" onclick="goHome()">← Back</button>
+  </div>
+
+  <!-- TRUTH OR DARE -->
+  <div class="screen game" id="truthDare">
+    <h1>🃏 Truth or Dare</h1>
+    <div class="card" id="truthDareText"></div>
+    <button onclick="nextTruthDare()">Another</button>
+    <button class="back" onclick="goHome()">← Back</button>
+  </div>
+
+  <!-- WOULD YOU RATHER -->
+  <div class="screen game" id="wouldRather">
+    <h1>🤔 Would You Rather</h1>
+    <div class="card" id="wouldRatherText"></div>
+    <button onclick="nextWouldRather()">Next</button>
+    <button class="back" onclick="goHome()">← Back</button>
+  </div>
+
+  <!-- CHALLENGE -->
+  <div class="screen game" id="challenge">
+    <h1>🎲 Challenge</h1>
+    <div class="card" id="challengeText"></div>
+    <button onclick="nextChallenge()">New Challenge</button>
+    <button class="back" onclick="goHome()">← Back</button>
+  </div>
+
+  <!-- CONVERSATION STARTER -->
+  <div class="screen game" id="conversation">
+    <h1>🧠 Conversation Starter</h1>
+    <div class="card" id="conversationText"></div>
+    <button onclick="nextConversation()">Next</button>
+    <button class="back" onclick="goHome()">← Back</button>
+  </div>
+
+  <!-- TONIGHT -->
+  <div class="screen game" id="tonight">
+    <h1>🎯 What Are We Doing Tonight?</h1>
+    <div class="card" id="tonightText"></div>
+    <button onclick="nextTonight()">Decide</button>
+    <button class="back" onclick="goHome()">← Back</button>
+  </div>
+
+</div>
+
+<!-- DATA -->
+<script src="data/mostLikely.js"></script>
+<script src="data/truthDare.js"></script>
+<script src="data/wouldRather.js"></script>
+<script src="data/challenges.js"></script>
+<script src="data/conversation.js"></script>
+<script src="data/tonight.js"></script>
+
+<!-- APP LOGIC -->
+<script src="script.js"></script>
+</body>
+</html>
