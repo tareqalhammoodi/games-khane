@@ -6,20 +6,6 @@ It includes classic party games like **Truth or Dare**, **Would You Rather**, **
 
 I built this for myself and my friends, but you can easily customize the questions and challenges to match you and your group.
 
-### 🚀 Features
-
-- No backend, no database
-- Fully client-side
-- Mobile-friendly dark UI
-- Easy to edit game data
-- Perfect for hangouts & game nights
-
-### 🛠 Tech
-
-- HTML
-- CSS
-- JavaScript
-
 ---
 
 Have fun & pass the phone 🎉
