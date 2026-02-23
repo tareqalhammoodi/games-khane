@@ -1,4 +1,4 @@
-const mostLikely = [
+export const mostLikely = [
   // Funny / Light
   "Who’s most likely to forget why they walked into a room?",
   "Who’s most likely to laugh at the wrong moment?",

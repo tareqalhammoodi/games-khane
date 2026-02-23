@@ -1,4 +1,4 @@
-const conversationStarters = [
+export const conversationStarters = [
   // Light & Fun
   "What’s a small thing that instantly puts you in a good mood?",
   "What’s the weirdest food combination you actually like?",

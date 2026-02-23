@@ -1,4 +1,4 @@
-const wouldRather = [
+export const wouldRather = [
   // Fun / Light
   "Would you rather lose your phone or your wallet?",
   "Would you rather always be 10 minutes late or 20 minutes early?",

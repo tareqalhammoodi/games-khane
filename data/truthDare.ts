@@ -1,4 +1,4 @@
-const truthDare = [
+export const truthDare = [
   // Truth — Light / Fun
   "Truth: What’s your most embarrassing habit?",
   "Truth: Who was your last crush?",

@@ -1,4 +1,4 @@
-const challenges = [
+export const challenges = [
   // Mix
   "Do 10 squats",
   "Hold a plank for 30 seconds",

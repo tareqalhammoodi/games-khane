@@ -1,4 +1,4 @@
-const tonightIdeas = [
+export const tonightIdeas = [
   "🍕 Order food & watch a movie",
   "🎲 Play games all night",
   "🚗 Go for a random late-night drive",
