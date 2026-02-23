@@ -30,12 +30,17 @@ app/
   globals.css
   layout.tsx
   page.tsx
+components/
+  ui/
+    InfoDialog.tsx
 features/
   games/
     components/
       GameApp.tsx
       HomeScreen.tsx
       GameScreen.tsx
+    constants/
+      howToPlayDialogContent.ts
     hooks/
       useGameFlow.ts
     services/
@@ -53,6 +58,8 @@ features/
       wheelCanvas.ts
 hooks/
   useClickOutside.ts
+  useDialog.ts
+  useEscapeKey.ts
   useTooltip.ts
 data/
   mostLikely.ts
@@ -64,6 +71,7 @@ data/
 lib/
   gameConfig.ts
 types/
+  dialog.ts
   game.ts
   wheel.ts
 ```
@@ -72,7 +80,7 @@ types/
 
 - Original screen switching and DOM updates were converted to React state transitions.
 - Wheel canvas logic was migrated to a client component using refs + effects.
-- Tooltip and modal behavior were rewritten with idiomatic React event/state handling.
+- Tooltip and dialog behavior are handled with reusable hooks/components (`useTooltip`, `useDialog`, `InfoDialog`).
 - Styling values were preserved to maintain pixel consistency with the previous version.
 - SEO metadata is defined in `app/layout.tsx`.
 - Wheel UI is lazy-loaded via dynamic import in `features/games/components/GameApp.tsx`.

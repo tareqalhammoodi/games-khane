@@ -85,6 +85,127 @@ p {
   transform: scale(1.02);
 }
 
+.home-help-inline {
+  margin: -2px 0 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.how-to-play-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+  color: #cfd0de;
+  padding: 8px 13px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+}
+
+.how-to-play-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(78, 205, 196, 0.45);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.how-to-play-btn:active {
+  transform: translateY(0);
+}
+
+.how-to-play-btn:focus-visible {
+  outline: 2px solid rgba(78, 205, 196, 0.9);
+  outline-offset: 2px;
+}
+
+.info-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(5, 8, 14, 0.82);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.2s ease;
+}
+
+.info-dialog {
+  position: relative;
+  width: min(430px, 100%);
+  max-height: min(86vh, 640px);
+  overflow: auto;
+  padding: 20px 18px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(78, 205, 196, 0.32);
+  background: linear-gradient(160deg, #252538 0%, #1d1d2c 100%);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.24s ease;
+}
+
+.info-dialog__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #d6d7e4;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.info-dialog__kicker {
+  margin-bottom: 8px;
+  text-align: left;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9de3de;
+}
+
+.info-dialog h2 {
+  margin: 0 0 10px;
+  text-align: left;
+  font-size: 1.35rem;
+}
+
+.info-dialog__intro {
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 0.96rem;
+  color: #d8d9e5;
+}
+
+.info-dialog__steps {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  color: #c8cada;
+}
+
+.info-dialog__steps li {
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.info-dialog__action {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(168, 127, 255, 0.45);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #34344e, #28283e);
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .card {
   background: #1a1a26;
   padding: 25px;
