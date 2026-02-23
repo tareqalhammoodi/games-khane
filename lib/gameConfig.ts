@@ -1,40 +1,34 @@
-import { challenges } from '@/data/challenges';
-import { conversationStarters } from '@/data/conversation';
-import { mostLikely } from '@/data/mostLikely';
-import { tonightIdeas } from '@/data/tonight';
-import { truthDare } from '@/data/truthDare';
-import { wouldRather } from '@/data/wouldRather';
 import type { GameDefinition, GameId } from '@/types/game';
 
 export const gameConfig: Record<GameId, GameDefinition> = {
   mostLikely: {
     title: '😂 Most Likely To',
-    data: mostLikely,
-    buttonText: 'Next'
+    buttonText: 'Next',
+    endpoint: '/api/most-likely'
   },
   truthDare: {
     title: '🃏 Truth or Dare',
-    data: truthDare,
-    buttonText: 'Another'
+    buttonText: 'Another',
+    endpoint: '/api/truth-dare'
   },
   wouldRather: {
     title: '🤔 Would You Rather',
-    data: wouldRather,
-    buttonText: 'Next'
+    buttonText: 'Next',
+    endpoint: '/api/would-you-rather'
   },
   challenge: {
     title: '🎲 Challenge',
-    data: challenges,
-    buttonText: 'New Challenge'
+    buttonText: 'New Challenge',
+    endpoint: '/api/challenge'
   },
   conversation: {
     title: '🧠 Conversation Starter',
-    data: conversationStarters,
-    buttonText: 'Next'
+    buttonText: 'Next',
+    endpoint: '/api/conversation'
   },
   tonight: {
     title: '🎯 What Are We Doing Tonight?',
-    data: tonightIdeas,
-    buttonText: 'Decide'
+    buttonText: 'Decide',
+    endpoint: '/api/tonight'
   }
 };

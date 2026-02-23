@@ -9,8 +9,27 @@ export type GameId =
 export type AppScreen = 'home' | 'game' | 'wheel';
 export type PlayableId = GameId | 'wheel';
 
+export type GameApiEndpoint =
+  | '/api/truth-dare'
+  | '/api/would-you-rather'
+  | '/api/most-likely'
+  | '/api/challenge'
+  | '/api/conversation'
+  | '/api/tonight';
+
+export interface GamePromptRecord {
+  id: string;
+  type: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface GamePromptApiResponse {
+  data: GamePromptRecord;
+}
+
 export interface GameDefinition {
   title: string;
   buttonText: string;
-  data: readonly string[];
+  endpoint: GameApiEndpoint;
 }
