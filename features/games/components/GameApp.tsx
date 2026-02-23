@@ -16,7 +16,7 @@ const WheelScreen = dynamic(() => import('@/features/wheel/components/WheelScree
 });
 
 export default function GameApp() {
-  const { screen, gameText, currentConfig, openGame, nextGame, goHome } = useGameFlow();
+  const { screen, gameText, isLoading, currentConfig, openGame, nextGame, goHome } = useGameFlow();
 
   return (
     <div className="app">
@@ -25,6 +25,7 @@ export default function GameApp() {
         isActive={screen === 'game'}
         config={currentConfig}
         text={gameText}
+        isLoading={isLoading}
         onNext={nextGame}
         onBack={goHome}
       />

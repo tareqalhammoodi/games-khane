@@ -85,6 +85,13 @@ p {
   transform: scale(1.02);
 }
 
+.menu button:disabled,
+.game button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
 .home-help-inline {
   margin: -2px 0 14px;
   display: flex;

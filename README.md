@@ -61,13 +61,6 @@ hooks/
   useDialog.ts
   useEscapeKey.ts
   useTooltip.ts
-data/
-  mostLikely.ts
-  truthDare.ts
-  wouldRather.ts
-  challenges.ts
-  conversation.ts
-  tonight.ts
 lib/
   gameConfig.ts
 types/
@@ -79,11 +72,26 @@ types/
 ## Migration Notes
 
 - Original screen switching and DOM updates were converted to React state transitions.
+- Game content is fetched from API endpoints:
+  - `/api/truth-dare`
+  - `/api/would-you-rather`
+  - `/api/most-likely`
+  - `/api/challenge`
+  - `/api/conversation`
+  - `/api/tonight`
+- Game API response shape expected by the client:
+  - `{ data: { id, type, content, createdAt } }`
 - Wheel canvas logic was migrated to a client component using refs + effects.
 - Tooltip and dialog behavior are handled with reusable hooks/components (`useTooltip`, `useDialog`, `InfoDialog`).
 - Styling values were preserved to maintain pixel consistency with the previous version.
 - SEO metadata is defined in `app/layout.tsx`.
 - Wheel UI is lazy-loaded via dynamic import in `features/games/components/GameApp.tsx`.
+
+## Environment
+
+- Optional:
+  - `NEXT_PUBLIC_GAME_API_BASE_URL` (example: `https://api.example.com`)
+  - If omitted, the app will call relative paths (same domain), e.g. `/api/truth-dare`.
 
 ---
 
