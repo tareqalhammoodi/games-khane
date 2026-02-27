@@ -7,12 +7,6 @@ import { useGameFlow } from '@/features/games/hooks/useGameFlow';
 
 const WheelScreen = dynamic(() => import('@/features/wheel/components/WheelScreen'), {
   ssr: false,
-  loading: () => (
-    <div className="screen game active" id="wheel">
-      <h1>☸️ Spin the wheel?</h1>
-      <p>Loading wheel...</p>
-    </div>
-  )
 });
 
 export default function GameApp() {
