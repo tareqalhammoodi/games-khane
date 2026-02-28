@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Games Khane',
   description: 'All-in-one party games: Truth or Dare, Would You Rather, Most Likely To, challenges, and more.',
   manifest: '/site.webmanifest',
-  themeColor: '#0ea5a4',
+  themeColor: '#0f0f14',
   icons: {
     icon: [
       { url: '/favicon.ico' },
