@@ -1,7 +1,9 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import InfoDialog from '@/components/ui/InfoDialog';
+import { HOME_ITEMS } from '@/features/games/constants/homeItems';
 import { HOW_TO_PLAY } from '@/features/games/constants/howToPlay';
 import { useDialog } from '@/hooks/useDialog';
 import type { PlayableId } from '@/types/game';
@@ -13,29 +15,65 @@ interface HomeScreenProps {
 
 export default function HomeScreen({ isActive, onOpenGame }: HomeScreenProps) {
   const { isOpen, open, close } = useDialog();
+  const wheelItem = HOME_ITEMS.find((item) => item.id === 'wheel');
+  const gameItems = HOME_ITEMS.filter((item) => item.id !== 'wheel');
+
   return (
     <div className={`screen ${isActive ? 'active' : ''}`} id="home">
-      <h1>🎮 Games Khane</h1>
-      <p>Pick a game &amp; pass the phone</p>
+      <section className="home-hero">
+        <p className="home-kicker">Party TIME</p>
+        <h1 className="home-title">GameKhane</h1>
+        <div className="home-subtitle-row">
+          <p className="home-subtitle">Pick a game, pass the phone, and keep the energy high.</p>
+          <div className="home-help-inline">
+            <button type="button" className="how-to-play-btn" onClick={open}>
+              How to play?
+            </button>
+          </div>
+        </div>
+      </section>
 
-      <div className="home-help-inline">
-        <button type="button" className="how-to-play-btn" onClick={open}>
-          How to play?
-        </button>
-      </div>
-
-      <div className="menu">
-        <Link href="/live" className="menu-link-btn">
-          🔴 GameKhane Live
+      <section className="home-live-card">
+        <div>
+          <p className="home-live-pill">QUIZ TIME</p>
+          <h2>GameKhane Live</h2>
+          <p>Host. Join. Compete. Test your knowledge together!</p>
+        </div>
+        <Link href="/live" className="home-live-card__cta">
+          Play Live
         </Link>
-        <button onClick={() => onOpenGame('mostLikely')}>😂 Who’s Most Likely To</button>
-        <button onClick={() => onOpenGame('truthDare')}>🃏 Truth or Dare</button>
-        <button onClick={() => onOpenGame('wouldRather')}>🤔 Would You Rather</button>
-        <button onClick={() => onOpenGame('challenge')}>🎲 Random Challenge</button>
-        <button onClick={() => onOpenGame('conversation')}>🧠 Conversation Starter</button>
-        <button onClick={() => onOpenGame('tonight')}>🎯 What Are We Doing Tonight?</button>
-        <button onClick={() => onOpenGame('wheel')}>☸️ Spin the wheel?</button>
+      </section>
+
+      <div className="home-menu-grid">
+        {gameItems.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className="home-menu-btn"
+            style={{ '--home-accent': item.accent } as CSSProperties}
+            onClick={() => onOpenGame(item.id)}
+          >
+            <span className="home-menu-btn__icon">{item.icon}</span>
+            <span className="home-menu-btn__text">
+              <strong>{item.title}</strong>
+              <small>{item.subtitle}</small>
+            </span>
+          </button>
+        ))}
       </div>
+
+      {wheelItem ? (
+        <section className="home-wheel-card">
+          <div>
+            <p className="home-wheel-pill">SPINNER</p>
+            <h2>{wheelItem.icon} {wheelItem.title}</h2>
+            <p>{wheelItem.subtitle}</p>
+          </div>
+          <button type="button" className="home-wheel-card__cta" onClick={() => onOpenGame(wheelItem.id)}>
+            Spin
+          </button>
+        </section>
+      ) : null}
 
       <InfoDialog
         isOpen={isOpen}

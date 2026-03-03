@@ -1,40 +1,25 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import GameScreen from "@/features/games/components/GameScreen";
+import { useCallback } from "react";
+import { useRouter } from "next/navigation";
 import HomeScreen from "@/features/games/components/HomeScreen";
-import { useGameFlow } from "@/features/games/hooks/useGameFlow";
-
-const WheelScreen = dynamic(
-  () => import("@/features/wheel/components/WheelScreen"),
-  {
-    ssr: false,
-  },
-);
+import { GAME_ROUTES } from "@/features/games/constants/gameRoutes";
+import type { PlayableId } from "@/types/game";
 
 export default function GameApp() {
-  const {
-    screen,
-    gameText,
-    isLoading,
-    currentConfig,
-    openGame,
-    nextGame,
-    goHome,
-  } = useGameFlow();
+  const router = useRouter();
+
+  const openGame = useCallback(
+    (id: PlayableId) => {
+      const route = GAME_ROUTES[id];
+      router.push(route);
+    },
+    [router],
+  );
 
   return (
     <div className="app">
-      <HomeScreen isActive={screen === "home"} onOpenGame={openGame} />
-      <GameScreen
-        isActive={screen === "game"}
-        config={currentConfig}
-        text={gameText}
-        isLoading={isLoading}
-        onNext={nextGame}
-        onBack={goHome}
-      />
-      <WheelScreen isActive={screen === "wheel"} onBack={goHome} />
+      <HomeScreen isActive onOpenGame={openGame} />
     </div>
   );
 }
