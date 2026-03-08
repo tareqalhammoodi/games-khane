@@ -115,6 +115,7 @@ export default function HomeScreen({ isActive, onOpenGame }: HomeScreenProps) {
         title={HOW_TO_PLAY.title}
         intro={HOW_TO_PLAY.intro}
         steps={HOW_TO_PLAY.steps}
+        sections={HOW_TO_PLAY.sections}
         actionLabel={HOW_TO_PLAY.actionLabel}
         titleId="howToPlayDialogTitle"
       />

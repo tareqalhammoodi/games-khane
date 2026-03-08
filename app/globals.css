@@ -461,7 +461,7 @@ p {
 .info-dialog {
   position: relative;
   width: min(430px, 100%);
-  max-height: min(86vh, 640px);
+  max-height: min(86vh, 500px);
   overflow: auto;
   padding: 20px 18px 18px;
   border-radius: 20px;
@@ -517,6 +517,25 @@ p {
 .info-dialog__steps li {
   margin-bottom: 10px;
   line-height: 1.35;
+}
+
+.info-dialog__section {
+  margin: 0 0 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.info-dialog__section h3 {
+  margin: 0 0 9px;
+  text-align: left;
+  color: #eaf2ff;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.info-dialog__section .info-dialog__steps {
+  margin-bottom: 0;
 }
 
 .info-dialog__action {
