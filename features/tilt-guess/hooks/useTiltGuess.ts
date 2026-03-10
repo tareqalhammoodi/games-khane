@@ -39,6 +39,7 @@ const WORD_LOCK_TIME_MS = 1200;
 const GESTURE_COOLDOWN_MS = 800;
 const FEEDBACK_DURATION_MS = 220;
 const MOTION_PERMISSION_STORAGE_KEY = 'tilt_guess_motion_permission_granted';
+const MOTION_PROBE_TIMEOUT_MS = 1200;
 
 // Gravity-Z thresholds (Heads Up style).
 const FACE_DOWN_THRESHOLD = -7; // Correct
@@ -327,6 +328,53 @@ export function useTiltGuess(): UseTiltGuessResult {
     const alreadyGranted = readStoredMotionPermissionGranted();
     setMotionPermission(alreadyGranted ? 'granted' : 'required');
   }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    // If iOS permission was already granted in browser settings, a probe event
+    // will arrive immediately. Persist that so we do not keep showing the CTA.
+    if (!canRequestMotionPermission || motionPermission === 'granted') {
+      return;
+    }
+
+    let resolved = false;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    const onProbeMotion = (event: DeviceMotionEvent) => {
+      if (resolved) {
+        return;
+      }
+
+      const z = event.accelerationIncludingGravity?.z;
+      if (typeof z !== 'number') {
+        return;
+      }
+
+      resolved = true;
+      setMotionPermission('granted');
+      storeMotionPermissionGranted(true);
+
+      window.removeEventListener('devicemotion', onProbeMotion);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+
+    window.addEventListener('devicemotion', onProbeMotion);
+    timeoutId = setTimeout(() => {
+      window.removeEventListener('devicemotion', onProbeMotion);
+    }, MOTION_PROBE_TIMEOUT_MS);
+
+    return () => {
+      window.removeEventListener('devicemotion', onProbeMotion);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [canRequestMotionPermission, motionPermission]);
 
   useEffect(() => {
     if (gameStatus !== 'playing') {
