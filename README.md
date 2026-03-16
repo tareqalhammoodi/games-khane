@@ -2,7 +2,7 @@
 
 **GameKhane** is a simple, web app for friends to hang out, laugh, and kill indecision.
 
-It includes classic party games like **Truth or Dare**, **Would You Rather**, **Most Likely To**, **Challenges**, **Chit-Chat**, and **What Are We Doing Tonight?** — all in one phone-friendly app that you can try [here](https://games-khane.vercel.app/).
+It includes classic party games like **Truth or Dare**, **Would You Rather**, **Most Likely To**, **Challenges**, **Chit-Chat**, and **What Are We Doing Tonight?** — plus **Riddles**, **Emoji Decode**, **Tilt & Guess**, **Spin the Wheel**, and two real-time live rooms: **GameKhane Live** (quiz) and **Hot Seat Live** (anonymous spotlight). You can try it [here](https://games-khane.vercel.app/).
 
 I built this for myself and my friends, but you can easily customize the questions and challenges to match you and your group.
 
@@ -13,6 +13,15 @@ I built this for myself and my friends, but you can easily customize the questio
 - TypeScript
 - React (vanilla patterns: state/effects/hooks)
 - Global CSS (migrated from original styles)
+- Socket.io (live multiplayer)
+
+## Highlights
+
+- Two real-time live rooms: GameKhane Live (quiz) + Hot Seat Live (anonymous questions, reactions, and “guess who asked”).
+- Tilt & Guess heads-up style game powered by device motion.
+- Spicy Mode toggle for most question-based games.
+- No-repeat question pool per session (deduped by id/content until the pool is exhausted).
+- Answer reveal for Riddles and Emoji Decode.
 
 ## Run Locally
 
@@ -27,6 +36,13 @@ Then open `http://localhost:3000`.
 
 ```txt
 app/
+  api/
+  live/
+  live/[roomCode]/
+  spotlight/
+  spotlight/[roomCode]/
+  tilt-guess/
+  wheel/
   globals.css
   layout.tsx
   page.tsx
@@ -45,6 +61,26 @@ features/
       useGameFlow.ts
     services/
       gameContentService.ts
+  live/
+    components/
+      common/
+      quiz/
+      spotlight/
+    hooks/
+      useLiveGame.ts
+    services/
+      liveSocket.ts
+    types/
+      core.ts
+  tilt-guess/
+    components/
+      TiltGuessHomeScreen.tsx
+      TiltGuessGameScreen.tsx
+      TiltGuessResultScreen.tsx
+    hooks/
+      useTiltGuess.ts
+    services/
+      tiltGuessWordService.ts
   wheel/
     components/
       WheelScreen.tsx
@@ -69,7 +105,7 @@ types/
   wheel.ts
 ```
 
-## Migration Notes
+## Notes
 
 - Original screen switching and DOM updates were converted to React state transitions.
 - Game content is fetched from API endpoints:
@@ -88,6 +124,8 @@ types/
 - Styling values were preserved to maintain pixel consistency with the previous version.
 - SEO metadata is defined in `app/layout.tsx`.
 - Wheel UI is lazy-loaded via dynamic import in `features/games/components/GameApp.tsx`.
+- Live multiplayer uses a Socket.io server (see `NEXT_PUBLIC_LIVE_SOCKET_URL`).
+- Tilt & Guess requests device motion permission where required (iOS).
 
 ## Environment
 
